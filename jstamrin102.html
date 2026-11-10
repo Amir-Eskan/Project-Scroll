@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mercedes-AMG G 63 — The Black Icon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+  <style>
+   
+    :root{
+      --bg:#050505;
+      --bg-2:#0a0a0a;
+      --bg-3:#0e0e0e;
+      --line:rgba(255,255,255,.08);
+      --txt:#f2f2f0;
+      --muted:#9c9c98;
+      --dim:#6e6e69;
+      --accent:#e10600;
+      --accent-soft:rgba(225,6,0,.12);
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'Inter',Arial,sans-serif;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{
+      scroll-behavior:smooth;
+      scrollbar-width:thin;
+      scrollbar-color:#262626 #0a0a0a;
+    }
+    body{
+      background:var(--bg);
+      color:var(--txt);
+      font-family:var(--sans);
+      overflow-x:hidden;
+    }
+
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      pointer-events:none;
+      opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::selection{background:var(--accent);color:#fff}
+    ::-webkit-scrollbar{width:10px}
+    ::-webkit-scrollbar-track{background:#0a0a0a}
+    ::-webkit-scrollbar-thumb{background:#262626;border-radius:99px;border:2px solid #0a0a0a}
+    ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+   
+    .one{
+      z-index:1;
+      position:fixed;
+      top:0;left:0;
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+      background:#000;
+    }
+    .one video{
+      width:100%;height:100%;
+      object-fit:cover;
+      filter:brightness(.5) contrast(1.08) saturate(.85);
+    }
+    .one::after{
+      content:"";
+      position:absolute;inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.55) 100%),
+        linear-gradient(180deg,rgba(5,5,5,.4),transparent 30%,transparent 65%,rgba(5,5,5,.75));
+    }
+    .one .hero-box{
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:100%;
+      text-align:center;
+      padding:20px;
+      z-index:2;
+    }
+    .one h2{
+      display:flex;align-items:center;justify-content:center;gap:22px;
+      font-size:clamp(11px,1.3vw,15px);
+      color:#d8d8d3;
+      letter-spacing:12px;
+      font-weight:500;
+    }
+    .one h2::before,.one h2::after{content:"";width:54px;height:1px;flex-shrink:0}
+    .one h2::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.55))}
+    .one h2::after{background:linear-gradient(90deg,rgba(255,255,255,.55),transparent)}
+    .one h1{
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:800;
+      font-size:clamp(50px,9vw,126px);
+      line-height:1.04;
+      letter-spacing:2px;
+      color:#fff;
+      margin:20px 0 24px;
+      text-shadow:0 24px 70px rgba(0,0,0,.65);
+    }
+    .one p{
+      color:#ff3b30;
+      font-size:clamp(11px,1.2vw,14px);
+      letter-spacing:8px;
+      font-weight:600;
+    }
+    .one .cue{
+      position:absolute;
+      bottom:30px;left:50%;
+      transform:translateX(-50%);
+      z-index:2;
+      display:flex;flex-direction:column;align-items:center;gap:12px;
+      font-size:10px;letter-spacing:5px;color:#8b8b86;
+    }
+    .one .cue::after{
+      content:"";width:1px;height:54px;
+      background:linear-gradient(180deg,rgba(255,255,255,.8),transparent);
+      animation:cue 2.2s ease-in-out infinite;
+    }
+    @keyframes cue{
+      0%{transform:scaleY(0);transform-origin:top}
+      45%{transform:scaleY(1);transform-origin:top}
+      55%{transform:scaleY(1);transform-origin:bottom}
+      100%{transform:scaleY(0);transform-origin:bottom}
+    }
+
+
+    .tag{
+      display:inline-flex;align-items:center;gap:12px;
+      font-size:11px;font-weight:600;
+      letter-spacing:4px;text-transform:uppercase;
+      color:#ff5348;
+      margin-bottom:24px;
+    }
+    .tag::before{content:"";width:34px;height:1px;background:var(--accent)}
+
+    .tow .text h1,
+    .tir .text2 h1,
+    .for .text3 h1,
+    .fiv .text4 h1,
+    .sik .text5 h1{
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:700;
+      font-size:clamp(30px,4.2vw,58px);
+      line-height:1.15;
+      letter-spacing:.5px;
+      margin-bottom:26px;
+    }
+
+    .tow .text p,
+    .tir .text2 p,
+    .for .text3 p,
+    .fiv .text4 p,
+    .sik .text5 p{
+      color:var(--muted);
+      font-size:16px;
+      font-weight:300;
+      line-height:2;
+      max-width:480px;
+    }
+
+    .tow .img,
+    .tir .img2,
+    .for .img3,
+    .fiv .img4,
+    .sik .img5{
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:0 40px 90px rgba(0,0,0,.6);
+      flex-shrink:0;
+    }
+    .tow .img img,
+    .tir .img2 img,
+    .for .img3 img,
+    .fiv .img4 img,
+    .sik .img5 img{
+      width:100%;height:100%;
+      display:block;object-fit:cover;
+      filter:grayscale(.15) contrast(1.03);
+      transition:1s ease;
+    }
+    .tow .img:hover img,
+    .tir .img2:hover img,
+    .for .img3:hover img,
+    .fiv .img4:hover img,
+    .sik .img5:hover img{
+      transform:scale(1.05);
+      filter:grayscale(0) contrast(1.05);
+    }
+
+   
+    .tow{
+      width:100%;
+      min-height:120vh;
+      position:relative;   
+      z-index:2;           
+      margin-top:100vh; 
+      display:flex;
+      align-items:center;
+      justify-content:space-evenly;
+      gap:60px;
+      padding:110px 8%;
+      background:
+        radial-gradient(900px 480px at 88% -5%,rgba(255,255,255,.05),transparent 60%),
+        var(--bg-2);
+    }
+    .tow .img{width:52%;aspect-ratio:4/3}
+
+   
+    .tir{
+      width:100%;
+      min-height:100vh;
+      position:relative;   
+      z-index:3;           
+      display:flex;
+      align-items:center;
+      justify-content:space-evenly;
+      gap:60px;
+      padding:110px 8%;
+      transition:1s ease;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(800px 460px at -5% 55%,var(--accent-soft),transparent 60%),
+        var(--bg-3);
+    }
+    .tir .img2{width:52%;aspect-ratio:4/3}
+
+    .scroll1{transform:translateX(-150%)}   
+
+   
+    .for{
+      width:100%;          
+      height:100vh;       
+      position:relative;   
+      z-index:4;           
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      gap:60px;
+      padding:60px 8%;
+      overflow:hidden;
+      transition:1s ease;  
+      background:
+        radial-gradient(1000px 620px at 68% 55%,rgba(225,6,0,.14),transparent 65%),
+        #080808;
+    }
+    .for::before{
+      content:"AMG";
+      position:absolute;
+      right:-2%;top:50%;
+      transform:translateY(-50%);
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:800;
+      font-size:36vh;
+      letter-spacing:8px;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(255,255,255,.07);
+      pointer-events:none;
+      user-select:none;
+    }
+    .for .img3{width:40%;aspect-ratio:16/10}
+    .for .text3{width:50%}
+
+    .scroll2{transform:translateX(150%)}    
+
+ 
+    .fiv{
+      width:100%;
+      min-height:120vh;
+      position:sticky;
+      top: 0;
+      z-index:6;
+      margin-top:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      gap:60px;
+      padding:110px 8%;
+      transition:1s ease;
+      background:
+        radial-gradient(900px 500px at 8% 105%,rgba(255,255,255,.05),transparent 60%),
+        var(--bg-2);
+    }
+    .fiv .img4{width:40%;aspect-ratio:16/10}
+    .fiv .text4{width:50%}
+
+    .scroll3{transform:translateY(120px);opacity:0}
+
+    
+    .sik{
+      position:fixed;                 
+      top:0;left:0;                   
+      width:100%;                     
+      height:100vh;                   
+      z-index:7;                      
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      gap:60px;
+      padding:60px 8%;
+      overflow:hidden;
+      transition:transform 1s ease;   
+      transform:translateY(-100%);    
+      background:
+        radial-gradient(1100px 640px at 50% 60%,rgba(225,6,0,.16),transparent 65%),
+        #060606;
+    }
+    .sik .img5{width:40%;aspect-ratio:16/10}
+    .sik .text5{width:50%}
+
+   
+    .last{
+      width:100%;
+      position:sticky;   
+      z-index:7;           
+      margin-top:100vh;  
+      height: 160vh;  
+      transition: 1s ease;
+    }
+    .last .img-last{position:relative;width:100%}
+    .last .img-last img{
+      width:100%;
+      height:160vh;
+      object-fit:cover;
+      display:block;
+      filter:grayscale(.2) contrast(1.05);
+    }
+    .last::before{
+      content:"";
+      position:absolute;inset:0;
+      z-index:1;
+      pointer-events:none;
+      background:linear-gradient(180deg,
+        rgba(5,5,5,.92) 0%,
+        rgba(5,5,5,.25) 30%,
+        rgba(5,5,5,.15) 55%,
+        rgba(5,5,5,.85) 92%,
+        #050505 100%);
+    }
+    .last .text-last{
+      position:absolute;
+      top:5%;left:50%;
+      transform:translateX(-50%);
+      z-index:2;
+      width:min(92%,760px);
+      text-align:center;
+    }
+    .last .text-last h1{
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:800;
+      font-size:clamp(34px,5.4vw,72px);
+      color:#fff;
+      line-height:1.1;
+      text-shadow:0 18px 60px rgba(0,0,0,.7);
+    }
+    .last .text-last h2{
+      margin-top:18px;
+      font-size:clamp(11px,1.3vw,14px);
+      font-weight:500;
+      letter-spacing:8px;
+      color:#c9c9c4;
+    }
+
+  
+    .fot{
+      width:100%;
+      min-height:100vh;
+      position:fixed;   
+      z-index:8;      
+      top: 0;
+      left: 0;     
+      background:var(--bg);
+      border-top:1px solid var(--line);
+      padding:90px 8% 0;
+      transition:transform 1s ease;
+    transform: translateY(-100%);
+    
+    }
+
+    .one-fot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+      padding-bottom:70px;
+      border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex;align-items:center;gap:18px}
+    .logo-badge{
+      width:72px;height:72px;border-radius:50%;
+      background:radial-gradient(circle at 32% 28%,#fafaf7,#c6c6bf);
+      display:grid;place-items:center;
+      box-shadow:0 14px 34px rgba(0,0,0,.55);
+      flex-shrink:0;
+    }
+    .logo-badge img{width:44px;height:44px;object-fit:contain;mix-blend-mode:multiply}
+    .brand h2{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:26px;
+      font-weight:700;
+    }
+    .brand p{
+      margin-top:5px;
+      color:var(--dim);
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .news{max-width:400px}
+    .news h4{font-size:11px;font-weight:600;letter-spacing:4px;color:#8f8f8a}
+    .news > p{margin-top:9px;color:var(--dim);font-size:13px;font-weight:300}
+    .news-box{
+      display:flex;align-items:center;gap:8px;
+      margin-top:20px;
+      background:#0e0e0e;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 6px 6px 22px;
+      transition:.35s;
+    }
+    .news-box:focus-within{
+      border-color:rgba(225,6,0,.55);
+      box-shadow:0 0 0 5px rgba(225,6,0,.07);
+    }
+    .news-box input{
+      flex:1;min-width:0;
+      background:transparent;border:0;outline:0;
+      color:#eee;font-family:var(--sans);font-size:14px;letter-spacing:.4px;
+    }
+    .news-box input::placeholder{color:#5a5a55}
+    .news-box button{
+      width:44px;height:44px;flex-shrink:0;
+      border:0;border-radius:50%;
+      background:var(--accent);color:#fff;
+      font-size:16px;cursor:pointer;
+      transition:.3s;
+    }
+    .news-box button:hover{
+      transform:translateX(4px);
+      box-shadow:0 10px 26px rgba(225,6,0,.4);
+    }
+
+    .tow-fot{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:40px;
+      padding:70px 0 80px;
+    }
+    .tow-fot span{
+      display:block;
+      font-size:11px;font-weight:600;
+      letter-spacing:4px;
+      color:#f6f6f5;
+      margin-bottom:20px;
+      font-size: 18px;
+    }
+    .tow-fot p{
+      position:relative;
+      width:fit-content;
+      color:#95958e;
+      font-size:14px;
+      line-height:2.5;
+      cursor:pointer;
+      transition:color .3s,padding .3s;
+    }
+    .tow-fot p::before{
+      content:"";
+      position:absolute;
+      left:0;top:50%;
+      transform:translateY(-50%);
+      width:0;height:1px;
+      background:var(--accent);
+      transition:width .3s;
+    }
+    .tow-fot p:hover{color:#fff;padding-left:20px}
+    .tow-fot p:hover::before{width:12px}
+
+  .one-fot,.tow-fot,.copy-bar{
+  position:relative;
+  z-index:1;
+}
+    .img-fot{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  margin:0;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+}
+.img-fot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:grayscale(.25) contrast(1.06);
+  transition:1.4s ease;
+}
+.fot:hover .img-fot img{transform:scale(1.04);filter:grayscale(0) contrast(1.05)}
+.img-fot::after{
+  content:"";
+  position:absolute;inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(5,5,5,.88) 0%,
+    rgba(5,5,5,.6) 35%,
+    rgba(5,5,5,.55) 62%,
+    rgba(5,5,5,.92) 100%);
+}
+.img-fot::before{
+  content:"THE BEST OR NOTHING";
+  position:absolute;
+  left:50%;bottom:96px;
+  transform:translateX(-50%);
+  z-index:2;
+  font-size:12px;
+  letter-spacing:9px;
+  color:rgba(255,255,255,.92);
+  white-space:nowrap;
+}
+
+    .copy-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:26px 0 30px;
+      color:#57574f;
+      font-size:12px;
+      letter-spacing:1px;
+    }
+
+   
+    @media(max-width:900px){
+      .tow,.tir,.for,.fiv,.sik{
+        flex-direction:column;
+        justify-content:center;
+        padding:80px 6%;
+        gap:38px;
+      }
+      .tow .img,.tir .img2,.for .img3,.fiv .img4,.sik .img5,
+      .tow .text,.tir .text2,.for .text3,.fiv .text4,.sik .text5{
+        width:100%;
+      }
+      .tow .text p,.tir .text2 p,.for .text3 p,.fiv .text4 p,.sik .text5 p{
+        font-size:15px;
+        max-width:100%;
+      }
+      .one h2{letter-spacing:6px;gap:14px}
+      .one h2::before,.one h2::after{width:28px}
+      .one p{letter-spacing:5px}
+      .for::before{font-size:22vh;right:-14%}
+      .last .text-last h2{letter-spacing:5px}
+
+      .one-fot{flex-direction:column;align-items:flex-start;gap:36px;padding-bottom:50px}
+      .tow-fot{grid-template-columns:1fr 1fr;gap:30px;padding:50px 0 60px}
+      .img-fot{margin-top:10px}
+      .img-fot img{height:38vh}
+      .img-fot::before{font-size:10px;letter-spacing:5px;bottom:24px}
+      .copy-bar{flex-direction:column;align-items:flex-start;padding:22px 0 26px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      html{scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body>
+
+  
+  <section class="one">
+    <video src="./pro101/442ae0e1a1d86e7ebd2e640a30041810.mp4" autoplay muted loop playsinline></video>
+    <div class="hero-box">
+      <h2>MERCEDES-AMG</h2>
+      <h1>THE BLACK ICON</h1>
+      <p>G 63 — UNLEASHED</p>
+    </div>
+    <div class="cue">SCROLL</div>
+  </section>
+
+
+  <section class="tow">
+    <div class="img">
+      <img src="./pro101/6b198e58-3e4f-42b4-a309-9e96dba0c934.png" alt="Mercedes-AMG G 63 exterior">
+    </div>
+    <div class="text">
+      <span class="tag">01 · Exterior</span>
+      <h1>EXQUISITE. EXTERIOR.</h1>
+      <p>A bold silhouette. Sculpted lines. An unmistakable presence. The G 63's exterior blends iconic design with modern sophistication, creating a statement of power and elegance.</p>
+    </div>
+  </section>
+
+ 
+  <section class="tir scroll1">
+    <div class="text2">
+      <span class="tag">02 · Presence</span>
+      <h1>ENGINEERED TO COMMAND.</h1>
+      <p>Designed for strength. Built for performance. The G 63's powerful wheels deliver exceptional stability, confident handling, and an unmistakable presence on every road. Every detail reflects precision, durability, and the unmistakable AMG character.</p>
+    </div>
+    <div class="img2">
+      <img src="./pro101/1ef8311e-a8c9-46ca-9ca2-e16ebe2758cc.png" alt="G 63 detail">
+    </div>
+  </section>
+
+
+  <section class="for scroll2">
+    <div class="img3">
+      <img src="./pro101/image.png" alt="G 63 performance">
+    </div>
+    <div class="text3">
+      <span class="tag">03 · Performance</span>
+      <h1>POWERFUL. PERFORMANCE.</h1>
+      <p>Unleash the power of AMG engineering. The G 63 combines breathtaking acceleration, exceptional capability, and legendary off-road performance. Built to conquer every terrain, designed to command every road.</p>
+    </div>
+  </section>
+
+
+  <section class="fiv ">
+    <div class="text4">
+      <span class="tag">04 · Wheels</span>
+      <h1>ROBUST. WHEELS.</h1>
+      <p>Built to stand strong. Designed to move with confidence. The G 63's bold wheels combine rugged strength with refined design. Every detail delivers durability, stability, and the unmistakable presence of AMG — on every road and beyond.</p>
+    </div>
+    <div class="img4">
+      <img src="./pro101/two.png" alt="G 63 wheels">
+    </div>
+  </section>
+
+
+  <section class="sik">
+    <div class="img5">
+      <img src="./pro101/images.jpg" alt="G 63 interior controls">
+    </div>
+    <div class="text5">
+      <span class="tag">05 · Cockpit</span>
+      <h1>STURDY. CONTROLS.</h1>
+      <p>Precision in every movement. Confidence in every command. The G 63's intuitive controls combine advanced technology with exceptional craftsmanship. Every interaction feels effortless, delivering a seamless connection between driver and machine.</p>
+    </div>
+  </section>
+
+ 
+  <section class="last">
+    <div class="img-last">
+      <img src="./pro101/d50f7e70-b945-49e6-a930-c45097667a07.png" alt="Mercedes-AMG G 63 at night">
+    </div>
+    <div class="text-last">
+      <h1>THE LEGEND NEVER ENDS</h1>
+      <h2>MERCEDES-AMG G 63</h2>
+    </div>
+  </section>
+
+ 
+  <footer class="fot">
+    <div class="one-fot">
+      <div class="brand">
+        <div class="logo-badge">
+          <img src="./pro101/41312ba8-2af0-4529-92ee-4ced1cc03fbf.png" alt="Mercedes-Benz logo">
+        </div>
+        <div>
+          <h2>Mercedes-Benz</h2>
+          <p>The best or nothing.</p>
+        </div>
+      </div>
+      <div class="news">
+        <h4>STAY CONNECTED</h4>
+        <p>Get the updates on the G 63 AMG.</p>
+        <div class="news-box">
+          <input type="email" placeholder="Your Email Address">
+          <button aria-label="Subscribe">➡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tow-fot">
+      <div>
+        <span>EXPLORE</span>
+        <p>Models</p>
+        <p>AMG Performance</p>
+        <p>Design</p>
+        <p>Innovation</p>
+        <p>Configurator</p>
+      </div>
+      <div>
+        <span>SUPPORT</span>
+        <p>Service</p>
+        <p>Warranty</p>
+        <p>Owners</p>
+        <p>Contact Us</p>
+        <p>FAQ</p>
+      </div>
+      <div>
+        <span>COMPANY</span>
+        <p>About Mercedes-Benz</p>
+        <p>Sustainability</p>
+        <p>Careers</p>
+        <p>Newsroom</p>
+        <p>Investor Relations</p>
+      </div>
+      <div>
+        <span>FOLLOW US</span>
+        <p>Instagram</p>
+        <p>YouTube</p>
+        <p>X / Twitter</p>
+        <p>LinkedIn</p>
+      </div>
+    </div>
+
+  
+    <div class="img-fot">
+      <img src="./pro101/8b5e9f8c-97b3-496c-ab7a-bf3f000f8bc9.png" alt="Mercedes-AMG G 63">
+    </div>
+
+    <div class="copy-bar">
+      <p>© 2025 Mercedes-Benz Group AG. All rights reserved.</p>
+      <p>Designed with passion in Affalterbach.</p>
+    </div>
+  </footer>
+
+<script>
+  const one  = document.querySelector('.one')
+  const tir  = document.querySelector('.tir')
+  const fors = document.querySelector('.for')
+  const fiv  = document.querySelector('.fiv')
+  const sik  = document.querySelector('.sik')
+  
+  const fot=document.querySelector('.fot')
+
+  addEventListener('scroll', () => {
+    let x = scrollY
+    if (x > 650) { one.style.visibility = 'hidden' }
+    else         { one.style.visibility = 'visible' }
+
+    if (x > 800) { tir.classList.remove('scroll1') }
+    else         { tir.classList.add('scroll1') }
+  })
+
+  addEventListener('scroll', () => {
+    let x = scrollY
+    if (x > 1500) { fors.classList.remove('scroll2') }
+    else          { fors.classList.add('scroll2') }
+
+    if (x > 1900) {
+      fors.style.position = 'fixed'
+      fors.style.top = '0'
+      fors.style.left = '0'
+    } else {
+     
+      fors.style.position = 'relative'
+    }
+  })
+
+  addEventListener('scroll', () => {
+    let x = scrollY
+    if (x > 2600) {
+      fors.style.visibility = 'hidden'
+      sik.style.transform = 'translateY(0)'
+   
+    } else {
+      fors.style.visibility = 'visible'
+      sik.style.transform = 'translateY(-100%)'
+     
+    }
+  })
+
+
+ addEventListener('scroll',()=>{
+
+let x=scrollY
+if(x>4200){
+    fot.style.transform='translateY(0)'
+}else{
+    fot.style.transform='translateY(-100%)'
+}
+
+
+ })
+
+  dispatchEvent(new Event('scroll'))
+</script>
+</body>
+</html>
